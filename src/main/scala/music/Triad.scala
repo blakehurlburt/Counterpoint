@@ -2,13 +2,13 @@ package music
 
 object Triad {
     sealed trait Quality {
-        def I   = Triad(this, music.One, music.Three, music.Five)
-        def II  = Triad(this, music.Two, music.Four, music.Six)
-        def III = Triad(this, music.Three, music.Five, music.Seven)
-        def IV  = Triad(this, music.Four, music.Six, music.One)
-        def V   = Triad(this, music.Five, music.Seven, music.Two)
-        def VI  = Triad(this, music.Six, music.One, music.Three)
-        def VII = Triad(this, music.Seven, music.Two, music.Four)
+        def I   = Triad(this, music.One,   Root)
+        def II  = Triad(this, music.Two,   Root)
+        def III = Triad(this, music.Three, Root)
+        def IV  = Triad(this, music.Four,  Root)
+        def V   = Triad(this, music.Five,  Root)
+        def VI  = Triad(this, music.Six,   Root)
+        def VII = Triad(this, music.Seven, Root)
 
         def One   = I
         def Two   = II
@@ -51,9 +51,19 @@ case object Minor      extends Quality
 case object Major      extends Quality
 case object Augmented  extends Quality
 
-final case class Triad(quality: Quality, root: Degree, third: Degree, fifth: Degree) {
-    def + = Triad(Augmented, root, third, fifth)
-    def m = Triad(Minor, root, third, fifth)
-    def M = Triad(Major, root, third, fifth)
-    def dim = Triad(Diminished, root, third, fifth)
+sealed trait Inversion
+
+case object Root   extends Inversion
+case object First  extends Inversion
+case object Second extends Inversion
+
+final case class Triad(quality: Quality, root: Degree, inversion: Inversion) {
+    def + =   Triad(Augmented,  root, inversion)
+    def m =   Triad(Minor,      root, inversion)
+    def M =   Triad(Major,      root, inversion)
+    def dim = Triad(Diminished, root, inversion)
+
+    def Root   = Triad(quality, root, music.Root)
+    def First  = Triad(quality, root, music.First)
+    def Second = Triad(quality, root, music.Second)
 }

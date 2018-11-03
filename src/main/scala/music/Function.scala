@@ -7,7 +7,7 @@ sealed trait Function {
 }
 
 case object Tonic extends Function {
-    val chords = Seq(I)
+    val chords = Seq(I Root, I First)
 }
 
 case object DominantPrep extends Function {
@@ -15,5 +15,5 @@ case object DominantPrep extends Function {
 }
 
 case object Dominant extends Function {
-    val chords = Seq(V, Diminished vii)
+    val chords = Seq(I Second, V, Diminished vii)
 }
