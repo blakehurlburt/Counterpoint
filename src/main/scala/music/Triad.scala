@@ -57,6 +57,16 @@ case object Root   extends Inversion
 case object First  extends Inversion
 case object Second extends Inversion
 
+object Inversion {
+    def allInversions(triad: Triad) = triad match {
+        case Triad(quality, root, _) => Seq(
+            Triad(quality, root, Root),
+            Triad(quality, root, First),
+            Triad(quality, root, Second)
+        )
+    }
+}
+
 final case class Triad(quality: Quality, root: Degree, inversion: Inversion) {
     def + =   Triad(Augmented,  root, inversion)
     def m =   Triad(Minor,      root, inversion)
