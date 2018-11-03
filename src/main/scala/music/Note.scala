@@ -17,6 +17,8 @@ import Note.Quality
 case object Natural extends Quality
 case object Flat    extends Quality
 case object Sharp   extends Quality
+case object DoubleFlat extends Quality
+case object DoubleSharp extends Quality
 
 final case class Note(degree: Degree, quality: Note.Quality = Natural)
 
