@@ -1,6 +1,8 @@
 import music._
-import music.Triad._
+import music.triad.Triad._
+
+import counterpoint._
 
 object Main extends App {
-    println(vii +)
+    println((Dominant Prep).chords)
 }

@@ -1,8 +1,9 @@
 package counterpoint
 
 import music._
-import music.Triad._
-import music.Inversion.allInversions
+import music.triad.Triad
+import music.triad.Triad._
+import music.triad.Inversion.allInversions
 
 sealed trait Function {
     val chords: Seq[Triad]
